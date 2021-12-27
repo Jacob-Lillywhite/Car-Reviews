@@ -1,0 +1,73 @@
+﻿@page
+@model CarCollection.Pages.Customer.Review.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="">
+    <form method="post">
+        <input type="hidden" asp-for="ReviewObj.Id" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="container backgroundWhite">
+            <div class="card">
+                <div class="card-header bg-light text-light ml-0 row container">
+                    <div class="col-12 col-md-6">
+                        <h1 class="text-primary">@Model.CarObj.carName</h1>
+                    </div>
+                    <div class="col-12 col-md-6 text-md-right">
+                        <h1 class="text-muted"> @((Model.ApplicationUserObj.FullName))</h1>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container rounded p-2">
+                        <div class="row">
+                            <div class="col-12 col-lg-8">
+                                <div class="row">
+                                    <div class="col-12">
+                                        
+                                        <span id="stars" data-rating="@Html.Raw(Model.ReviewObj.Rating)" data-num-stars="5"></span>
+                                        <script>
+
+                                            var rating = @Model.ReviewObj.Rating // Grab the Rating
+                                            for (var i = 0; i < 5; i++) {
+                                                if (i < rating) {
+                                                    document.getElementById("stars").innerHTML += '<i class="fas fa-star" style="color: gold;"></i>';
+                                                }
+                                                if (i >= rating) {
+                                                    document.getElementById("stars").innerHTML += '<i class="fas fa-star" style="color: black;"></i>';
+                                                }
+                                            }
+
+                                        </script>
+
+                                        <p class="text-secondary">@Html.Raw(Model.ReviewObj.Description)</p>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4 p-1 text-center">
+                                    <img src="@Model.ReviewObj.Image" style="width:100%" class="rounded" />                        
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-12 ">
+                            <a asp-page="/Customer/Home/Index" class="btn btn-success btn-square form-control btn-lg" style="height:50px;">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

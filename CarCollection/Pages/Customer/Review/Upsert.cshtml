@@ -1,0 +1,124 @@
+﻿@page
+@model CarCollection.Pages.Customer.Review.UpsertModel
+<div id="mainDiv">
+    <form method="post" asp-action="Upsert" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row px-2 mx-2 backgroundWhite border">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-12 px-3" style="border-bottom: 1px solid #325d88">
+                    <h2 class="text-primary">@(Model.ReviewObj.Review.Id!=0 ? "Update" : "Create") Review</h2>
+                </div>
+                <div class="col-8 pt-3">
+                    <!-- Id -->
+                    <div class="form-group row">
+                        <input class="form-control" asp-for="ReviewObj.Review.Id" type="hidden" />
+
+                    </div>
+                    <!-- Rating -->
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label asp-for="ReviewObj.Review.Rating">Rating</label>
+                        </div>
+                        <div class="col-9">
+                            <input class="form-control" asp-for="ReviewObj.Review.Rating" id="rating" type="hidden"/>
+                            <div class="starRating">
+                                <i class="fa fa-star" data-rating="1" id="star1"></i>
+                                <i class="fa fa-star" data-rating="2" id="star2"></i>
+                                <i class="fa fa-star" data-rating="3" id="star3"></i>
+                                <i class="fa fa-star" data-rating="4" id="star4"></i>
+                                <i class="fa fa-star" data-rating="5" id="star5"></i>
+                            </div>
+                            <span class="text-danger" asp-validation-for="ReviewObj.Review.Rating"></span>
+                        </div>
+                    </div>
+                    <!-- Description -->
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label asp-for="ReviewObj.Review.Description">Description</label>
+                        </div>
+                        <div class="col-9">
+                            <textarea class="form-control" asp-for="ReviewObj.Review.Description" id="textDesc" style="height: 200px;"></textarea>
+                        </div>
+                    </div>
+                    <!-- Image Upload -->
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label asp-for="ReviewObj.Review.Image">Image</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="file" class="form-control" id="uploadBox" name="files" />
+                        </div>
+                    </div>
+                    <!-- Car -->
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label asp-for="ReviewObj.Review.CarId">Car</label>
+                        </div>
+                        <div class="col-9">
+                            @Html.DropDownListFor(m => m.ReviewObj.Review.CarId,
+                                                    Model.ReviewObj.CarList,
+                                                    "- Please select a Car - ",
+                                                    new { @class = "form-control" })
+                            <span class="text-danger" asp-validation-for="ReviewObj.Review.CarId"></span>
+                        </div>
+                    </div>
+                    <!-- User-->
+                    <!-- TODO: Pass the UserId here so the user only edits their own collections.-->
+                    <div class="form-group row" style="display: none;">
+                        <div class="col-3">
+                            <label asp-for="ReviewObj.Review.ApplicationUserId"></label>
+                        </div>
+                        <div class="col-9">
+                            <input class="form-control" asp-for="ReviewObj.Review.ApplicationUserId" value="@Model.UserId" />
+                            <span class="text-danger" asp-validation-for="ReviewObj.Review.ApplicationUserId"></span>
+                        </div>
+                    </div>
+                    <!-- Update/Create/Back-->
+                    <div class="form-group row">
+                        <div class="col-9 offset-3">
+                            <div class="row">
+                                <div class="col-6">
+                                    @if (Model.ReviewObj.Review.Id != 0)
+                                    {
+                                        <button type="submit" class="btn btn-primary form-control">Update</button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-primary form-control" onclick="return ValidateInput()">Create</button>
+                                    }
+                                </div>
+                                <div class="col-6">
+                                    <a asp-page="/Customer/Review/Index" class="btn btn-success form-control">Back to List</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Image PReview -->
+                    @if (Model.ReviewObj.Review != null)
+                    {
+                        <div class="col-4 p-4">
+                            <img src="@Model.ReviewObj.Review.Image" style=" width: 100%; border-radius:5px; border: 1px solid #bbb9b9;" alt="Image PReview" />
+                        </div>
+                    }
+                </div>
+            </div>
+    </form>
+</div>
+
+@section Scripts{
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: "lists",
+            menubar: 'file edit format'
+        });
+        function ValidateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                swal('Error', 'Please Select an Image', 'error')
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <script src="~/js/star-rating.js"></script>
+}

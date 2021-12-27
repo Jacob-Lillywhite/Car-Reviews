@@ -1,0 +1,92 @@
+﻿@page
+@model CarCollection.Pages.Admin.Invoice.UpsertModel
+    <div id="mainDiv">
+        <form method="post" asp-action="Upsert">
+            <div class="container">
+                <div class="row px-2 mx-2 backgroundWhite border">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="col-12 px-3" style="border-bottom: 1px solid #325d88">
+                        <h2 class="text-primary">@(Model.InvoiceObj.Invoice.Id!=0 ? "Update" : "Create") Invoice</h2>
+                    </div>
+                    <div class="col-8 pt-3">
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label asp-for="InvoiceObj.Invoice.Quantity"></label>
+                            </div>
+                            <div class="col-9">
+                                <input class="form-control" asp-for="InvoiceObj.Invoice.Quantity" />
+                                <span class="text-danger" asp-validation-for="InvoiceObj.Invoice.Quantity"></span>
+                            </div>
+                            @if (Model.InvoiceObj.Invoice.Id != 0)
+                            {
+                                <input type="hidden" asp-for="InvoiceObj.Invoice.Quantity" />
+                            }
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label asp-for="InvoiceObj.Invoice.Value"></label>
+                            </div>
+                            <div class="col-9">
+                                <input class="form-control" asp-for="InvoiceObj.Invoice.Value" />
+                                <span class="text-danger" asp-validation-for="InvoiceObj.Invoice.Value"></span>
+                            </div>
+                            @if (Model.InvoiceObj.Invoice.Id != 0)
+                            {
+                                <input type="hidden" asp-for="InvoiceObj.Invoice.Value" />
+                            }
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label asp-for="InvoiceObj.Invoice.Date"></label>
+                            </div>
+                            <div class="col-9">
+                                <input class="form-control" asp-for="InvoiceObj.Invoice.Date" />
+                                <span class="text-danger" asp-validation-for="InvoiceObj.Invoice.Date"></span>
+                            </div>
+                            @if (Model.InvoiceObj.Invoice.Id != 0)
+                            {
+                                <input type="hidden" asp-for="InvoiceObj.Invoice.Id" />
+                            }
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label asp-for="InvoiceObj.Invoice.CarId">Car</label>
+                            </div>
+                            <div class="col-9">
+                                @Html.DropDownListFor(m => m.InvoiceObj.Invoice.CarId,
+                                                        Model.InvoiceObj.CarList,
+                                                        "- Please select a category - ",
+                                                        new { @class = "form-control" })
+                                <span class="text-danger" asp-validation-for="InvoiceObj.Invoice.CarId"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label asp-for="InvoiceObj.Invoice.ApplicationUserId">User</label>
+                            </div>
+                            <div class="col-9">
+                                @Html.DropDownListFor(m => m.InvoiceObj.Invoice.ApplicationUserId,
+                                                        Model.InvoiceObj.ApplicationUserList,
+                                                        "- Please select a category - ",
+                                                        new { @class = "form-control" })
+                                <span class="text-danger" asp-validation-for="InvoiceObj.Invoice.ApplicationUserId"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-9 offset-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-primary form-control">@(Model.InvoiceObj.Invoice.Id!=0 ? "Update" : "Create")</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <a asp-page="./Index" class="btn btn-success form-control">Back to List</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
