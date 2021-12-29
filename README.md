@@ -1,15 +1,17 @@
 # **MYCOLLECTION** **PROJECT**
 ---
-![Reversi GIF](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/homepage.png)
+![Homepage Demo](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/homepage.png)
 ---
-![Reversi GIF](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/registration.png)
+![Registration Page Demo](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/registration.png)
 ---
-![Reversi GIF](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/carCreation.PNG)
+![Car Creation Page Demo](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/carCreation.PNG)
 ---
-![Reversi GIF](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/reviewCreation.PNG)
+![Review Creation Page Demo](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/reviewCreation.PNG)
 ---
-![Reversi GIF](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/updateReview.PNG)
+![Upsert Review Demo](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/updateReview.PNG)
 ---
-![Reversi GIF](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/userHome.png)
+![Logged-in User Homepage Demo](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/userHome.png)
 ---
-![Reversi GIF](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/demoReviews.PNG)
+![Review List Demo](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/demoReviews.PNG)
+---
+![Reading Review Demo](https://github.com/Jacob-Lillywhite/Car-Reviews/blob/master/GithubImages/readReview.PNG)
